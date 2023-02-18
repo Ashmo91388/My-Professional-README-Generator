@@ -8,7 +8,7 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is your projects title',
+        message: 'What is your projects title?',
       },
       {
         type: 'input',
@@ -34,12 +34,12 @@ const questions = [
       {
         type: 'input',
         name: 'installation',
-        message: 'Provide instructions for installation',
+        message: 'Provide instructions for installation.',
       },
       {
         type: 'input',
         name: 'test',
-        message: 'Provide instructions for running the test',
+        message: 'Provide instructions for running the test.',
       },
       {
         type: 'input',
@@ -49,7 +49,12 @@ const questions = [
       {
         type: 'input',
         name: 'contributing',
-        message: 'Provide instructions on how to contribute to this app',
+        message: 'Provide instructions on how to contribute to this app.',
+      },
+      {
+        type: 'input',
+        name: 'test',
+        message: 'Provide instructions on how to test this app.',
       },
 
 ];
@@ -61,7 +66,7 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.createPromptModule(questions).then((userResponses) => {
+    inquirer.prompt(questions).then((userResponses) => {
         console.log('userResponse =',userResponses);
         writeToFile('generatedReadMe.md',generateMarkdown({ ...userResponses}));
     })
